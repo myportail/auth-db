@@ -1,17 +1,22 @@
 version: '2'
 services:
   authdb:
-    image: 'mysql/mysql-server:latest'
-    entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
+    # image: 'mysql/mysql-server:latest'
+    image: 'mcr.microsoft.com/mssql/server'
+    # entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
+    entrypoint: ['/opt/mssql/bin/sqlservr']
     ports:
-      - "3306:3306"
+      # - "3306:3306"
+      - "1433:1433"
     environment:
-      - MYSQL_DATABASE=auth
-      - MYSQL_USER=authUser
-      - MYSQL_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
-      - MYSQL_ROOT_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
-      - MYSQL_ROOT_HOST=*.*.*.*
-    volumes:
-      - auth-data:/var/lib/mysql
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
+      # - MYSQL_DATABASE=auth
+      # - MYSQL_USER=authUser
+      # - MYSQL_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
+      # - MYSQL_ROOT_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
+      # - MYSQL_ROOT_HOST=*.*.*.*
+    # volumes:
+      # - auth-data:/var/lib/mysql
 volumes:
   auth-data:
