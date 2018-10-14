@@ -16,7 +16,7 @@ services:
       # - MYSQL_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
       # - MYSQL_ROOT_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
       # - MYSQL_ROOT_HOST=*.*.*.*
-    # volumes:
-      # - auth-data:/var/lib/mysql
+    volumes:
+      - auth-data:/var/opt/mssql
 volumes:
   auth-data:
