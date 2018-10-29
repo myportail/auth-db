@@ -18,5 +18,9 @@ services:
       # - MYSQL_ROOT_HOST=*.*.*.*
     volumes:
       - auth-data:/var/opt/mssql
+    networks:
+      - authService
 volumes:
   auth-data:
+networks:
+  authService:
