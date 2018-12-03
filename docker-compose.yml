@@ -20,7 +20,25 @@ services:
       - auth-data:/var/opt/mssql
     networks:
       - authService
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    environment:
+      # - MONGODB_USERNAME=root
+      - MONGODB_USERNAME=authService
+      - MONGODB_PASSWORD=igQFUwjZZyxgken7gcKg*gTu
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password123
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_DATABASE=authdb
+      # - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - authService
+    # volumes:
+    #   - auth-data-mongodb:/bitnami
 volumes:
   auth-data:
+  auth-data-mongodb:
 networks:
   authService:
